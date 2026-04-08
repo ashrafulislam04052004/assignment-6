@@ -2,7 +2,7 @@
 
 A modern, fully responsive e-commerce website for buying digital tools and productivity resources. Built as part of the **A-6 Assignment**.
 
-![Project Banner](https://i.ibb.co.com/F18LZqH/screencapture-programing-assignment-6-vercel-app-2026-03-30-20-12-17.png)  
+![Project Banner](https://i.ibb.co.com/F18LZqH/screencapture-assignment-6-vercel-app-2026-03-30-20-12-17.png)  
 
 
 ## 📝 Project Description
@@ -38,7 +38,7 @@ The website features a clean UI with smooth toggling between **Products** and **
 - Smooth remove functionality from cart
 - Total items and clean checkout (clears cart)
 
-## 🚀 Live Demo
 
-[🔗 View Live Site](https://programing-assignment-6.vercel.app/)  
+
+
 

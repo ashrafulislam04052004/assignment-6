@@ -1,68 +1,86 @@
-import React, { useState } from "react";
+import React from "react";
 import { GiCheckMark } from "react-icons/gi";
 import { toast } from "react-toastify";
 
 const Product = ({ item, cartData, setCartData }) => {
-  const isAlreadyInCart = cartData.some(cartItem=>cartItem.id===item.id)
-  const handleAbbBtn = (item) => {
-    const filterCar = cartData.find((cartItem) => cartItem.id === item.id);
-    console.log(filterCar);
-    if (filterCar) {
-      toast.warning(`${item.name} already in your cart.`, {
+  const isInCart = cartData.some(cartItem => cartItem.id === item.id);
+
+  const handleAddToCart = () => {
+    if (isInCart) {
+      toast.warning(`${item.name} is already in your cart.`, {
         position: "top-center",
       });
       return;
-    } else {
-      setCartData([...cartData, item]);
-      toast.success(`${item.name} Product successfully added to the cart 🛒`, {
-        position: "top-center",
-      });
+    }
+
+    setCartData([...cartData, item]);
+    toast.success(`${item.name} added to cart successfully 🛒`, {
+      position: "top-center",
+    });
+  };
+
+  // Tag styling helper
+  const getTagStyles = (tag) => {
+    switch (tag?.toLowerCase()) {
+      case "popular":
+        return "bg-gradient-to-r from-[#4F39F6] to-[#9514FA] text-[#E1E7FF]";
+      case "best seller":
+        return "bg-[#FEF3C6] text-yellow-700";
+      case "new":
+        return "bg-[#DBFCE7] text-green-700";
+      default:
+        return "";
     }
   };
-  return (
-    <div className="border border-zinc-300 p-4 rounded-xl relative flex flex-col justify-between space-y-6 transition-all duration-1000 hover:shadow-2xl ">
-      <div className="space-y-1 md:space-y-2">
-      
-      <p
-        className={`absolute right-2 top-2 inline-flex  rounded-full px-3 md:py-1 ${item.tag === "popular" ? "bg-linear-to-r from-[#4F39F6] to-[#9514FA]  text-[#E1E7FF]" : item.tag === "best seller" ? "bg-[#FEF3C6] text-yellow-700" : item.tag === "new" ? "bg-[#DBFCE7]" : ""}`}
-      >
-        {item.tag}
-      </p>
-      <img
-        className="w-16 bg-base-100 shadow-sm p-2 rounded-full"
-        src={item.icon}
-        alt=""
-      />
-      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">{item.name}</h1>
-      <p className="text-sm md:text-lg text-zinc-500">{item.description}</p>
-      <div className="flex items-center gap-1">
-        <p>
-          <span className="text-3xl font-bold">${item.price}</span>
-        </p>
-        <p>
-          / <span className="text-zinc-500">{item.period}</span>
-        </p>
-      </div>
-   <div>
-   {item.features.map((feature, i) => (
-        <div key={i}>
-          <p className="inline-flex items-center gap-1 text-zinc-500">
-            <GiCheckMark className="text-green-500" />
-            {feature}
-          </p>
-        </div>
-      ))}
-   </div>
-      </div>
-      <button
-        onClick={() => handleAbbBtn(item)}
-        className={`btn  w-full rounded-full ${isAlreadyInCart ? " btn-primary " : "bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white"}`}
-      >
-        {
-          isAlreadyInCart ? "added to cart" :"Buy Now"
-        }
 
-        
+  return (
+    <div className="border border-zinc-300 p-5 rounded-xl relative flex flex-col justify-between space-y-6 transition-all duration-500 hover:shadow-2xl">
+      
+      {/* Product Tag */}
+      {item.tag && (
+        <span className={`absolute right-2 top-2 rounded-full px-3 py-1 text-sm ${getTagStyles(item.tag)}`}>
+          {item.tag}
+        </span>
+      )}
+
+      {/* Product Image & Info */}
+      <div className="space-y-2 md:space-y-3">
+        <img
+          src={item.icon}
+          alt={item.name}
+          className="w-16 h-16 bg-base-100 shadow-sm p-2 rounded-full object-contain"
+        />
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">{item.name}</h2>
+        <p className="text-sm md:text-lg text-zinc-500">{item.description}</p>
+
+        {/* Price */}
+        <div className="flex items-center gap-2">
+          <span className="text-3xl font-bold">${item.price}</span>
+          <span className="text-zinc-500">/ {item.period}</span>
+        </div>
+
+        {/* Features */}
+        <div className="flex flex-col gap-1">
+          {item.features.map((feature, i) => (
+            <p key={i} className="flex items-center gap-2 text-zinc-500 text-sm md:text-base">
+              <GiCheckMark className="text-green-500" />
+              {feature}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      {/* Buy Button */}
+      <button
+        onClick={handleAddToCart}
+        className={`btn w-full rounded-full transition ${
+          isInCart
+            ? "btn-primary cursor-not-allowed"
+            : "bg-gradient-to-r from-[#4F39F6] to-[#9514FA] text-white hover:opacity-90"
+        }`}
+        disabled={isInCart}
+      >
+        {isInCart ? "Added to Cart" : "Buy Now"}
       </button>
     </div>
   );

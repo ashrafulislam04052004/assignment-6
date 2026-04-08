@@ -10,8 +10,8 @@ const Stats = () => {
             </div>
             <div>
                 <h2 className='text-2xl md:text-4xl lg:text-5xl font-bold'>200+</h2>
-                <p className='lg:text-lg'>Premium Tools</p>
-            </div>
+                 <p className='lg:text-lg'>Premium Tools</p>
+            </div> 
             <div>
                 <h2 className='text-2xl md:text-4xl lg:text-5xl font-bold'>4.9</h2>
                 <p className='lg:text-lg'>Rating</p>

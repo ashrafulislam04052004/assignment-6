@@ -3,7 +3,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 
-const Footer = () => {
+const Footer = () =>  {
   return (
     <div>
       <footer className="bg-neutral  p-10 ">

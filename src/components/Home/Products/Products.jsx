@@ -9,7 +9,7 @@ const Products = ({promiseData,cartData, setCartData}) => {
             {
                 data.map(item=><Product item={item} cartData={cartData} setCartData={setCartData} />)
             }
-        </div>
+        </div> 
     );
 };
 

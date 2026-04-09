@@ -81,7 +81,7 @@ const PricingCard = ({ plan }) => (
               <GiCheckMark className={`text-xs ${plan.gradient ? "text-green-300" : "text-green-300"}`} />
             </span>
             {feature}
-          </p>
+           </p>
         ))}
       </div>
 

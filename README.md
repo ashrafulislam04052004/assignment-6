@@ -38,7 +38,7 @@ The website features a clean UI with smooth toggling between **Products** and **
 Smooth remove functionality from cart
  Total items and clean checkout (clears cart)
 
-live link: precious-fox-fb3937.netlify.app
+live link: bucolic-blini-578eed.netlify.app
 
 
 

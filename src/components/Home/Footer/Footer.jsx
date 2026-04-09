@@ -4,7 +4,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookSquare } from "react-icons/fa";
 
 const Footer = () =>  {
-  return (
+  return  (
     <div>
       <footer className="bg-neutral  p-10 ">
         <div className="flex flex-col md:flex-row justify-between container lg:max-w-7xl mx-auto text-neutral-content footer sm:footer-horizontal">

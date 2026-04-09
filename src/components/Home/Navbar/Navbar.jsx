@@ -9,7 +9,7 @@ const NavButton = ({ label, active, onClick }) => (
   </button>
 );
 
-const Navbar = ({ cartData }) => {
+const  Navbar = ({ cartData }) => {
   const [active, setActive] = useState("");
   const totalPrice = cartData.reduce((sum, item) => sum + item.price, 0);
 
